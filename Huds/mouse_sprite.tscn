@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://d02nxltj1pt6s"]
+
+[ext_resource type="Texture2D" uid="uid://ct4ydtt18qgvk" path="res://Art/Tiny Swords/UI/Pointers/01.png" id="1_qroso"]
+[ext_resource type="Script" path="res://Scenes/MouseSprite.gd" id="2_kbtra"]
+
+[node name="MouseSprite" type="Sprite2D"]
+z_index = 100
+texture = ExtResource("1_qroso")
+script = ExtResource("2_kbtra")

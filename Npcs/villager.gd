@@ -39,10 +39,12 @@ func _process(delta):
 		if not selected:
 			if Input.is_action_just_pressed("click"):
 				selected = true
+				Global.npc_selected = true
 				moving = false
 		else:
 			if Input.is_action_just_pressed("click"):
 				selected = false
+				Global.npc_selected = false
 			
 	# If the villager has been selected then next click is where he goes
 	# If character is moving, allow target to be changed
@@ -51,6 +53,7 @@ func _process(delta):
 			if Input.is_action_just_pressed("click"):
 				target_position = get_global_mouse_position()
 				selected = false
+				Global.npc_selected = false
 				moving = true
 				
 	

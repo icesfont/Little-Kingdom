@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d06aqwmkyjsps"]
+[gd_scene load_steps=10 format=3 uid="uid://d06aqwmkyjsps"]
 
 [ext_resource type="Texture2D" uid="uid://cnfdyfowvrbg7" path="res://Art/Tiny Swords/Factions/Knights/Troops/Pawn/Blue/Pawn_Blue.png" id="1_hrlqo"]
 [ext_resource type="Script" path="res://Npcs/villager.gd" id="1_vmllt"]
@@ -38,6 +38,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 2)]
+}
 
 [sub_resource type="Animation" id="Animation_6tdlc"]
 resource_name = "walking"
@@ -56,9 +68,27 @@ tracks/0/keys = {
 "values": [6, 7, 8, 9, 10, 11]
 }
 
+[sub_resource type="Animation" id="Animation_kihiu"]
+resource_name = "building"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8bd5o"]
 _data = {
 "RESET": SubResource("Animation_bpwlq"),
+"building": SubResource("Animation_kihiu"),
 "idle": SubResource("Animation_sq34r"),
 "walking": SubResource("Animation_6tdlc")
 }
@@ -73,8 +103,10 @@ script = ExtResource("1_vmllt")
 texture = ExtResource("1_hrlqo")
 hframes = 6
 vframes = 6
+frame = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_el635")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -85,6 +117,7 @@ libraries = {
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_6odmo")
 
