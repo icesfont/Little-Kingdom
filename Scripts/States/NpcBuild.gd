@@ -9,9 +9,3 @@ class_name NpcBuild
 func Enter():
 	animation_player.play("building")
 	
-
-func Update(_delta : float):
-	pass
-	
-func Physics_Update(_delta : float):
-	pass

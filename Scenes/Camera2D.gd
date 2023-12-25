@@ -4,11 +4,14 @@ var last_mouse_position = Vector2()
 var dragging = false
 
 @export var zoom_speed : float = 0.1
-@export var min_zoom = Vector2(0.5, 0.5)
+@export var min_zoom = Vector2(0.1, 0.1)
 @export var max_zoom = Vector2(2, 2)
 
 func _ready():
-	pass  # Replace with function body if needed
+	zoom.x = 0.5
+	$"../HUD/MouseSprite".scale.x = 0.5
+	zoom.y = 0.5
+	$"../HUD/MouseSprite".scale.y = 0.5
 
 func _input(event):
 	if event is InputEventMouseButton:

@@ -57,6 +57,7 @@ position = Vector2(-104, 32)
 
 [node name="ButtonTimer" type="Timer" parent="."]
 wait_time = 0.2
+one_shot = true
 
 [connection signal="mouse_entered" from="Build/Area2D" to="Build" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Build/Area2D" to="Build" method="_on_area_2d_mouse_exited"]

@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://cnfdyfowvrbg7" path="res://Art/Tiny Swords/Factions/Knights/Troops/Pawn/Blue/Pawn_Blue.png" id="1_hrlqo"]
 [ext_resource type="Script" path="res://Npcs/villager.gd" id="1_vmllt"]
 [ext_resource type="Script" path="res://Npcs/State Machine.gd" id="3_lf3w2"]
-[ext_resource type="Script" path="res://Scripts/NpcIdle.gd" id="4_bgw75"]
-[ext_resource type="Script" path="res://Scripts/NpcBuild.gd" id="5_asr5y"]
+[ext_resource type="Script" path="res://Scripts/States/NpcIdle.gd" id="4_oyvqd"]
+[ext_resource type="Script" path="res://Scripts/States/NpcBuild.gd" id="5_hytu1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_el635"]
 radius = 23.0
@@ -141,15 +141,14 @@ initial_state = NodePath("Idle")
 npc = NodePath("..")
 
 [node name="Idle" type="Node" parent="State Machine" node_paths=PackedStringArray("npc")]
-script = ExtResource("4_bgw75")
+script = ExtResource("4_oyvqd")
 npc = NodePath("../..")
 
 [node name="Build" type="Node" parent="State Machine" node_paths=PackedStringArray("npc")]
-script = ExtResource("5_asr5y")
+script = ExtResource("5_hytu1")
 npc = NodePath("../..")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

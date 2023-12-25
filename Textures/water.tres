@@ -1,0 +1,6 @@
+[gd_resource type="AnimatedTexture" load_steps=2 format=3 uid="uid://dicwv6biom2yv"]
+
+[ext_resource type="Texture2D" uid="uid://eh1ot7vegn6j" path="res://Art/Tiny Swords/Terrain/Water/Foam/Foam.png" id="1_s14qr"]
+
+[resource]
+frame_0/texture = ExtResource("1_s14qr")

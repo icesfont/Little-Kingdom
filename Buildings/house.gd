@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var villager_building = false
 var exists = false
+var current_builder : CharacterBody2D
 
 var constructing_texture = preload("res://Art/Tiny Swords/Factions/Knights/Buildings/House/House_Construction.png")
 var normal_texture = preload("res://Art/Tiny Swords/Factions/Knights/Buildings/House/House_Blue.png")
@@ -15,9 +16,9 @@ func _process(delta):
 
 
 func _on_build_area_body_entered(body):
-	if body is Villager and body.current_state.name.to_lower() == "build":
-		villager_building = true
+	if not current_builder and body is Villager and body.current_state.name.to_lower() == "build":
+		current_builder = body
 	
 func _on_build_area_body_exited(body):
-	if body is Villager and body.current_state.name.to_lower() == "build":
-		villager_building = false
+	if current_builder and  current_builder == body:
+		pass # Stop building

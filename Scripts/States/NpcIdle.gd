@@ -10,4 +10,5 @@ func Physics_Update(_delta : float):
 		npc.get_node("AnimationPlayer").play("walking")
 	else:
 		npc.get_node("AnimationPlayer").play("idle")
-			
+
+
