@@ -34,4 +34,6 @@ func _handle_zoom(event):
 	
 	# Clamp zoom to minimum and maximum values
 	zoom.x = clamp(zoom.x, min_zoom.x, max_zoom.x)
+	$"../HUD/MouseSprite".scale.x = clamp(zoom.x, min_zoom.x, max_zoom.x)
 	zoom.y = clamp(zoom.y, min_zoom.y, max_zoom.y)
+	$"../HUD/MouseSprite".scale.y = clamp(zoom.y, min_zoom.y, max_zoom.y)
