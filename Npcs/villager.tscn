@@ -1,7 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://d06aqwmkyjsps"]
+[gd_scene load_steps=13 format=3 uid="uid://d06aqwmkyjsps"]
 
 [ext_resource type="Texture2D" uid="uid://cnfdyfowvrbg7" path="res://Art/Tiny Swords/Factions/Knights/Troops/Pawn/Blue/Pawn_Blue.png" id="1_hrlqo"]
 [ext_resource type="Script" path="res://Npcs/villager.gd" id="1_vmllt"]
+[ext_resource type="Script" path="res://Npcs/State Machine.gd" id="3_lf3w2"]
+[ext_resource type="Script" path="res://Scripts/NpcIdle.gd" id="4_bgw75"]
+[ext_resource type="Script" path="res://Scripts/NpcBuild.gd" id="5_asr5y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_el635"]
 radius = 23.0
@@ -97,6 +100,7 @@ _data = {
 radius = 29.0172
 
 [node name="Villager" type="CharacterBody2D"]
+z_index = 7
 script = ExtResource("1_vmllt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -126,6 +130,19 @@ visible = false
 position = Vector2(5, -0.399998)
 color = Color(0, 0.52549, 1, 0.254902)
 polygon = PackedVector2Array(27, -31.6, 27, 32.4, -37, 32.4, -37, -31.6)
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "npc")]
+script = ExtResource("3_lf3w2")
+initial_state = NodePath("Idle")
+npc = NodePath("..")
+
+[node name="Idle" type="Node" parent="State Machine" node_paths=PackedStringArray("npc")]
+script = ExtResource("4_bgw75")
+npc = NodePath("../..")
+
+[node name="Build" type="Node" parent="State Machine" node_paths=PackedStringArray("npc")]
+script = ExtResource("5_asr5y")
+npc = NodePath("../..")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
