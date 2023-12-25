@@ -75,7 +75,6 @@ hframes = 6
 vframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_el635")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -86,7 +85,6 @@ libraries = {
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_6odmo")
 

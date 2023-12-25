@@ -36,22 +36,30 @@ func _physics_process(delta):
 func _process(delta):
 	# If mouse is hovering over villager
 	if mouse_hovering:
-		if Input.is_action_just_pressed("click"):
-			selected = true
-			moving = false
+		if not selected:
+			if Input.is_action_just_pressed("click"):
+				selected = true
+				moving = false
+		else:
+			if Input.is_action_just_pressed("click"):
+				selected = false
+			
 	# If the villager has been selected then next click is where he goes
-	elif selected:
+	# If character is moving, allow target to be changed
+	elif selected or moving:
 		if mouse_in_allowed_area:
 			if Input.is_action_just_pressed("click"):
 				target_position = get_global_mouse_position()
 				selected = false
 				moving = true
+				
 	
 	# Indicate this villager is selected
 	if selected or moving:
 		$SelectShape.visible = true
 	else:
 		$SelectShape.visible = false
+
 	
 
 func _on_area_2d_mouse_entered():
