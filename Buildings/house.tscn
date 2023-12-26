@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpknmdlxl6aor"]
+[gd_scene load_steps=5 format=3 uid="uid://dpknmdlxl6aor"]
 
 [ext_resource type="Script" path="res://Buildings/house.gd" id="1_mtr7j"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8acnw"]
-radius = 48.0416
+[sub_resource type="CircleShape2D" id="CircleShape2D_71cvt"]
+radius = 32.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqvv7"]
-radius = 88.0
+radius = 96.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tb530"]
+size = Vector2(144, 144)
 
 [node name="House" type="StaticBody2D"]
 y_sort_enabled = true
@@ -14,7 +17,7 @@ script = ExtResource("1_mtr7j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
-shape = SubResource("CircleShape2D_8acnw")
+shape = SubResource("CircleShape2D_71cvt")
 disabled = true
 
 [node name="BuildArea" type="Area2D" parent="."]
@@ -30,7 +33,15 @@ one_shot = true
 position = Vector2(0, -32)
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 35.35
+
+[node name="TakenSpace" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TakenSpace"]
+shape = SubResource("RectangleShape2D_tb530")
 
 [connection signal="body_entered" from="BuildArea" to="." method="_on_build_area_body_entered"]
 [connection signal="body_exited" from="BuildArea" to="." method="_on_build_area_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="mouse_entered" from="TakenSpace" to="." method="_on_taken_space_mouse_entered"]
+[connection signal="mouse_exited" from="TakenSpace" to="." method="_on_taken_space_mouse_exited"]

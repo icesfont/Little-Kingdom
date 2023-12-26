@@ -3,6 +3,7 @@ extends Node
 var npc_selected : bool = false
 var mouse_on_button : bool = false
 var mouse_in_allowed_area : bool = false
+var mouse_on_used_area = []
 
 # Queue of jobs that need to be fulfilled
 var build_queue = []

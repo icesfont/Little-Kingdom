@@ -30,7 +30,7 @@ func Enter():
 func Physics_Update(_delta):
 	if walking_to_build:
 		var direction = npc.to_local(npc.nav_agent.get_next_path_position())
-		if abs(npc.global_position - job[1]).length() > 100:
+		if abs(npc.global_position - job[1]).length() > 85:
 			npc.velocity = direction.normalized() * SPEED
 		else:
 			npc.velocity = Vector2.ZERO
@@ -48,6 +48,6 @@ func Physics_Update(_delta):
 		npc.get_node("AnimationPlayer").play("building")
 	
 func Update(_delta):
-	if newBuilding.finished_building:
+	if not newBuilding or newBuilding.finished_building or (npc.velocity.length() > 0 and constructing):
 		Global.idle_villagers.append(npc)
 		Transitioned.emit(self, "idle")

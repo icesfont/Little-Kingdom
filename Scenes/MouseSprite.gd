@@ -6,4 +6,9 @@ func _ready():
 
 func _process(delta):
 	# Update the position of the sprite to the mouse position
-	position = get_global_mouse_position()
+	if $"../Build".build_mode:
+		position.x = get_global_mouse_position().x
+		position.y = get_global_mouse_position().y - 16
+	else:
+		position = get_global_mouse_position()
+	

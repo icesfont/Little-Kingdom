@@ -24,7 +24,7 @@ func _process(delta):
 			
 			button_timer.start()
 	else:
-		if Input.is_action_just_pressed("click") and build_mode and Global.mouse_in_allowed_area:
+		if Input.is_action_just_pressed("click") and build_mode and Global.mouse_in_allowed_area and Global.mouse_on_used_area.size() == 0:
 			Global.add_build("house", $"../../Camera2D".get_global_mouse_position())
 			build_mode = not build_mode
 	if current_state != "Normal" and current_state != "Pressed":

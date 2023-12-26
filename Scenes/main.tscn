@@ -1026,6 +1026,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(520, 392, 944, 392, 944
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Main" type="Node2D"]
+y_sort_enabled = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_776v2")
@@ -1069,7 +1070,19 @@ polygon = PackedVector2Array(328, 384, 328, 440, 384, 440, 384, 584, 328, 584, 3
 
 [node name="HUD" parent="." instance=ExtResource("8_vk6p8")]
 
-[node name="Npcs" type="Node" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_lw6n1")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(726, 422)
+scale = Vector2(23.5625, 13.5625)
+texture = ExtResource("8_2fknq")
+
+[node name="Npcs" type="Node2D" parent="."]
+y_sort_enabled = true
 script = ExtResource("6_ojij4")
 
 [node name="Villager" parent="Npcs" instance=ExtResource("4_uscjo")]
@@ -1081,18 +1094,9 @@ position = Vector2(584, 456)
 [node name="Villager3" parent="Npcs" instance=ExtResource("4_uscjo")]
 position = Vector2(848, 432)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
-navigation_polygon = SubResource("NavigationPolygon_lw6n1")
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
-position = Vector2(510, 302)
-scale = Vector2(16.8125, 9.8125)
-texture = ExtResource("8_2fknq")
-
-[node name="Buildings" type="Node" parent="."]
+[node name="Buildings" type="Node2D" parent="."]
+z_index = 1
+y_sort_enabled = true
 
 [connection signal="mouse_entered" from="AllowedArea" to="Npcs" method="_on_allowed_area_mouse_entered"]
 [connection signal="mouse_exited" from="AllowedArea" to="Npcs" method="_on_allowed_area_mouse_exited"]
