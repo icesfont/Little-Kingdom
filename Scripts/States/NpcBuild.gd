@@ -14,7 +14,9 @@ var constructing : bool = false
 var building = preload("res://Buildings/house.tscn")
 var newBuilding
 
-func Enter():
+func Enter():	
+	constructing = false
+	walking_to_build = true
 	# Get job
 	job = Global.build_queue[0]
 	Global.build_queue.remove_at(0)
