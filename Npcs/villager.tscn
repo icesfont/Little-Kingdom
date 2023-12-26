@@ -100,7 +100,6 @@ _data = {
 radius = 29.0172
 
 [node name="Villager" type="CharacterBody2D"]
-z_index = 7
 y_sort_enabled = true
 collision_mask = 3
 motion_mode = 1
@@ -149,6 +148,8 @@ script = ExtResource("5_hytu1")
 npc = NodePath("../..")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

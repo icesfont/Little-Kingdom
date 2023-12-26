@@ -15,6 +15,8 @@ var current_state : State
 
 func _ready():
 	makepath()
+	Global.villagers.append(self)
+	Global.idle_villagers.append(self)
 
 func _physics_process(delta):
 	var direction = to_local(nav_agent.get_next_path_position())
@@ -44,7 +46,7 @@ func _process(delta):
 			
 	# If the villager has been selected then next click is where he goes
 	elif selected:
-		if parent_node.mouse_in_allowed_area and not Global.mouse_on_button:
+		if Global.mouse_in_allowed_area and not Global.mouse_on_button:
 			if Input.is_action_just_pressed("click"):
 				target_position = get_global_mouse_position()
 				makepath()

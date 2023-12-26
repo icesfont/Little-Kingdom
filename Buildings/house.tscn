@@ -2,32 +2,35 @@
 
 [ext_resource type="Script" path="res://Buildings/house.gd" id="1_mtr7j"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qkdwg"]
-size = Vector2(98, 92)
+[sub_resource type="CircleShape2D" id="CircleShape2D_8acnw"]
+radius = 48.0416
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ja1bp"]
-radius = 79.0063
+[sub_resource type="CircleShape2D" id="CircleShape2D_wqvv7"]
+radius = 88.0
 
-[node name="House" type="CharacterBody2D"]
-z_index = 3
+[node name="House" type="StaticBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_mtr7j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
-position = Vector2(0, 26)
-shape = SubResource("RectangleShape2D_qkdwg")
+shape = SubResource("CircleShape2D_8acnw")
+disabled = true
 
 [node name="BuildArea" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuildArea"]
-position = Vector2(1, 28)
-shape = SubResource("CircleShape2D_ja1bp")
+shape = SubResource("CircleShape2D_wqvv7")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
+one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
 
 [connection signal="body_entered" from="BuildArea" to="." method="_on_build_area_body_entered"]
 [connection signal="body_exited" from="BuildArea" to="." method="_on_build_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

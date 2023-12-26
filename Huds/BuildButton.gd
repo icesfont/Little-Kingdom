@@ -17,21 +17,18 @@ func _ready():
 	mouse_sprite.modulate.a = 1
 
 func _process(delta):
-	if Global.npc_selected:
-		if mouse_hovering:
-			if Input.is_action_just_pressed("click"):
-				_switch_states("Pressed")
-				build_mode = true
-				
-				button_timer.start()
-		else:
-			if Input.is_action_just_pressed("click") and build_mode:
-				build_mode = not build_mode
-		if current_state != "Normal" and current_state != "Pressed":
-			_switch_states("Normal")
+	if mouse_hovering:
+		if Input.is_action_just_pressed("click"):
+			_switch_states("Pressed")
+			build_mode = true
+			
+			button_timer.start()
 	else:
-		if current_state != "Disbaled":
-			_switch_states("Disabled")
+		if Input.is_action_just_pressed("click") and build_mode and Global.mouse_in_allowed_area:
+			Global.add_build("house", $"../../Camera2D".get_global_mouse_position())
+			build_mode = not build_mode
+	if current_state != "Normal" and current_state != "Pressed":
+		_switch_states("Normal")
 	
 	if build_mode:
 		mouse_sprite.texture = house_texture
