@@ -5,6 +5,7 @@ class_name NpcIdle
 
 var direction : Vector2
 
+# Very in depth state
 func Physics_Update(_delta : float):
 	if npc.velocity.length() > 0:
 		npc.get_node("AnimationPlayer").play("walking")

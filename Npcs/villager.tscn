@@ -147,6 +147,8 @@ npc = NodePath("../..")
 script = ExtResource("5_hytu1")
 npc = NodePath("../..")
 
+[node name="Timer" type="Timer" parent="State Machine"]
+
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]

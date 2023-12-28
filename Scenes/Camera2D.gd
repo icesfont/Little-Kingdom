@@ -8,6 +8,7 @@ var dragging = false
 @export var max_zoom = Vector2(2, 2)
 
 func _ready():
+	# Set the initial zoom scales
 	zoom.x = 0.5
 	$"../HUD/MouseSprite".scale.x = 0.5
 	zoom.y = 0.5
@@ -15,6 +16,7 @@ func _ready():
 
 func _input(event):
 	if event is InputEventMouseButton:
+		# Right click is how to drag the camera
 		if event.is_action_pressed("right_click"):
 			dragging = true
 			last_mouse_position = get_global_mouse_position()
@@ -29,6 +31,7 @@ func _input(event):
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP or event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			_handle_zoom(event)
 
+# Mouse wheen up and down to handle zooming in and out
 func _handle_zoom(event):
 	if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 		zoom -= Vector2(zoom_speed, zoom_speed)

@@ -5,6 +5,9 @@ extends Node
 
 var states : Dictionary = {}
 
+# This all handles switching between states for the villagers
+# Same script can be used for any characterbody2d
+
 func _ready():
 	for child in get_children():
 		if child is State:

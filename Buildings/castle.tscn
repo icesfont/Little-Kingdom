@@ -1,40 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpknmdlxl6aor"]
+[gd_scene load_steps=5 format=3 uid="uid://cljwode6crwje"]
 
-[ext_resource type="Script" path="res://Buildings/House.gd" id="1_yd3c3"]
+[ext_resource type="Script" path="res://Buildings/Castle.gd" id="1_sdvfl"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_71cvt"]
-radius = 40.7922
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_deuyo"]
+size = Vector2(365, 160)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wqvv7"]
-radius = 96.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1l2s"]
+size = Vector2(352, 192)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tb530"]
-size = Vector2(192, 192)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rt3pf"]
+size = Vector2(266, 77)
 
-[node name="House" type="StaticBody2D"]
+[node name="Castle" type="StaticBody2D"]
 y_sort_enabled = true
-script = ExtResource("1_yd3c3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-z_index = 1
-shape = SubResource("CircleShape2D_71cvt")
-disabled = true
+script = ExtResource("1_sdvfl")
 
 [node name="BuildArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuildArea"]
-shape = SubResource("CircleShape2D_wqvv7")
+position = Vector2(1.5, 16)
+shape = SubResource("RectangleShape2D_deuyo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -32)
+position = Vector2(0, -40)
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
-radius = 35.35
+position = Vector2(0, 16)
+radius = 40.11
 
 [node name="TakenSpace" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TakenSpace"]
-shape = SubResource("RectangleShape2D_tb530")
+position = Vector2(0, 24)
+shape = SubResource("RectangleShape2D_n1l2s")
 
 [node name="Timers" type="Node" parent="."]
 
@@ -47,6 +45,12 @@ wait_time = 5.0
 
 [node name="DeleteTimer" type="Timer" parent="Timers"]
 wait_time = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(0, 22.5)
+shape = SubResource("RectangleShape2D_rt3pf")
+disabled = true
 
 [connection signal="body_entered" from="BuildArea" to="." method="_on_build_area_body_entered"]
 [connection signal="body_exited" from="BuildArea" to="." method="_on_build_area_body_exited"]

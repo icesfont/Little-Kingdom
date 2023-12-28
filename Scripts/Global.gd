@@ -14,6 +14,7 @@ func add_build(job : String, coords : Vector2):
 	build_queue.append([job, coords])
 
 func _process(delta):
+	# Assign build jobs to idle villagers
 	if build_queue.size() > 0 and idle_villagers.size() > 0:
 		idle_villagers[0].get_node("State Machine").on_child_transition(idle_villagers[0].current_state, "build")
 		idle_villagers.remove_at(0)

@@ -12,13 +12,16 @@ var selected = false
 @onready var nav_agent : NavigationAgent2D = $NavigationAgent2D
 
 var current_state : State
+var newBuilding
 
 func _ready():
+	# It's a little buggy so I made the initial target position itself
 	makepath()
 	Global.villagers.append(self)
 	Global.idle_villagers.append(self)
 
 func _physics_process(delta):
+	# Pathfinding shenanigans
 	var direction = to_local(nav_agent.get_next_path_position())
 	if direction.length() > 10:
 		velocity = direction.normalized() * SPEED
