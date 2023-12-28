@@ -30,7 +30,8 @@ func _process(delta):
 		if Input.is_action_just_pressed("click"):
 			# Once button is clicked, we now in build mode
 			_switch_states("Pressed")
-			build_mode = true
+			# Toggle type thing, if in build mode then can toggle out of it by pressing it again
+			build_mode = not build_mode
 			
 			# To switch back to the normal state, simulate a clicked button
 			button_timer.start()
