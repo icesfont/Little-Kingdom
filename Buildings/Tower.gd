@@ -8,3 +8,5 @@ func _ready():
 	$Sprite2D.modulate.a = 0.4
 	$Sprite2D.texture = normal_texture
 	$Timers/DeleteTimer.start()
+	
+	type = "tower"

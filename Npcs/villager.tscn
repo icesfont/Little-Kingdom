@@ -101,7 +101,7 @@ radius = 29.0172
 
 [node name="Villager" type="CharacterBody2D"]
 y_sort_enabled = true
-collision_mask = 3
+collision_layer = 2
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_vmllt")
@@ -113,7 +113,6 @@ vframes = 6
 frame = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_el635")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -150,8 +149,6 @@ npc = NodePath("../..")
 [node name="Timer" type="Timer" parent="State Machine"]
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

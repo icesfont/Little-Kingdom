@@ -4,6 +4,8 @@ class_name Building
 # This is an abstract class, since all buildings are pretty much exactly the same
 # They can all use the same script
 
+var type
+
 var finished_building : bool = false
 var current_builder : CharacterBody2D
 var destroyed : bool = false
@@ -39,6 +41,7 @@ func destroy_self():
 
 
 func _on_build_area_body_entered(body):
+	print("MEOW")
 	# This is checking if the villager that entered its build area is the correct builder
 	if body is Villager and body.newBuilding and body.newBuilding == self:
 		current_builder = body
@@ -68,7 +71,8 @@ func _on_build_timer_timeout():
 # This timer starts when the object is instantiated
 # It so that if the builder for some reason cant get to the build in a reasonable time
 # it doesn't stay there forever and destroys self
+# However it adds it back to the queue for another villager to do it
 func _on_delete_timer_timeout():
 	if not current_builder:
-		Global.add_build("house", position)
+		Global.add_build(type, position)
 		queue_free()
