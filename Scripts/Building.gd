@@ -41,6 +41,7 @@ func destroy_self():
 
 
 func _on_build_area_body_entered(body):
+	print("MEOW")
 	# This is checking if the villager that entered its build area is the correct builder
 	if body is Villager and body.newBuilding and body.newBuilding == self:
 		current_builder = body
